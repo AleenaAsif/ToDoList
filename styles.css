@@ -1,3 +1,13 @@
+@media (max-width: 828px) {
+    .container {
+        padding: 5px;
+    }
+    .TODO-app {
+        margin: 20px auto 10px;
+        padding: 20px;
+    }
+  
+}
 *{
     margin:0;
     padding: 0;
