@@ -8,20 +8,32 @@ inputBox.addEventListener("keyup", function(event) {
 });
 
 function addTask() {
+    var inputBox = document.getElementById("input-box");
+    var listContainer = document.getElementById("list-container");
+
     if (inputBox.value === '') {
         alert("Please enter something!");
     } else {
-        let li = document.createElement("li");
-        li.innerHTML = inputBox.value;  
+        var li = document.createElement("li");
+        li.textContent = inputBox.value;
         listContainer.appendChild(li);
-        let span=document.createElement("span");
-        span.innerHTML="\u00d7";
-        li.appendChild(span);
         
+        var span = document.createElement("span");
+        span.textContent = "\u00d7";
+        li.appendChild(span);
+
+        // Adjust the height of the TODO-app box based on the number of tasks
+        var todoApp = document.querySelector(".TODO-app");
+        var taskCount = listContainer.children.length;
+        var newHeight = 200 + taskCount * 40; // Adjust the multiplier as needed
+        
+        todoApp.style.minHeight = newHeight + "px";
+    }
+
+    inputBox.value = '';
+    saveData();
 }
-inputBox.value = '';
-saveData();
-}
+
 
 listContainer.addEventListener("click",function(e){
     if(e.target.tagName==="LI"){
